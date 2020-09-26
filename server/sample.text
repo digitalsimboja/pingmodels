@@ -1,0 +1,87 @@
+// App.js
+// ...
+// Entry point for data routes (API)
+app.use('/data', indexRoute);
+
+if(process.env.NODE_ENV !== 'development') {
+  app.use(express.static(path.join(__dirname, 'build-client')));
+
+  app.get('/*', function(req, res) {
+    return res.sendFile(path.resolve( __dirname, 'build-client' , 'index.html'));
+  });
+
+  //////////////////////
+
+  // App.js
+// ...
+// Entry point for data routes (API)
+app.use('/data', indexRoute);
+
+if(process.env.NODE_ENV !== 'development') {
+  app.use(express.static(path.join(__dirname, 'build-client')));
+  app.use(express.static(path.join(__dirname, 'build-admin')));
+
+  app.get('/client/*', function(req, res) {
+    return res.sendFile(path.resolve( __dirname, 'build-client' , 'index.html'));
+  });
+  app.get('/admin/*', function(req, res) {
+    return res.sendFile(path.resolve( __dirname, 'build-client' , 'index.html'));
+  });
+}
+
+if(process.env.NODE_ENV !== 'development') {
+  // Admin paths
+  app.use('/admin', express.static(path.join(__dirname, 'build-admin')));
+  app.get('/admin/*', function(req, res) {
+    return res.sendFile(path.resolve( __dirname, 'build-admin' , 'index.html'));
+  });
+
+  // Site paths
+  app.use('/', express.static(path.join(__dirname, 'build-client')));
+  app.get('/*', function(req, res) {
+    return res.sendFile(path.resolve( __dirname, 'build-client' , 'index.html'));
+  });
+}
+
+
+// Create an express instance
+const app = express();
+const appAdmin = express();
+const appClient = express();
+const appVendor = express();
+
+appAdmin.use(express.static(path.join(__dirname, 'build-admin')));
+  appClient.use(express.static(path.join(__dirname, 'build-client')));
+  appVendor.use(express.static(path.join(__dirname, 'build-vendor')));
+
+  appAdmin.use((req, res, next) => {
+    return res.sendFile(path.resolve( __dirname, 'build-admin' , 'index.html'));
+  });
+
+  appClient.use((req, res, next) => {
+    return res.sendFile(path.resolve( __dirname, 'build-client' , 'index.html'));
+  });
+
+  appVendor.use((req, res, next) => {
+    return res.sendFile(path.resolve( __dirname, 'build-vendor' , 'index.html'));
+  });
+
+  app.use(vhost('domain.com', appClient));
+  app.use(vhost('www.domain.com', appClient));
+  app.use(vhost('a.domain.com', appAdmin));
+  app.use(vhost('b.domain.com', appVendor));
+
+  // when going to `/app2`, serve the files at app2/build/* as static files
+app.use('/app2', express.static(path.join(__dirname, 'app2/build')))
+// when going to `/`, serve the files at mainApp/build/* as static files
+app.use(express.static(path.join(__dirname, 'mainApp/build')))
+
+
+// These are necessary for routing within react
+app.get('app2/*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/app2/build/index.html'))
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/mainApp/build/index.html'));
+});

@@ -1,0 +1,46 @@
+{
+  "name": "elegantmodelsbackend",
+  "version": "1.0.0",
+  "description": "ElegantModels",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sunday Mgbogu",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-promise-router": "^4.0.1",
+    "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
+    "get-video-duration": "^3.0.2",
+    "handbrake-js": "^5.0.0",
+    "helmet": "^4.0.0",
+    "joi": "^17.1.1",
+    "mime": "^2.4.6",
+    "mongoose": "^5.9.24",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.10",
+    "passport": "^0.4.1",
+    "passport-facebook-token": "^4.0.0",
+    "passport-google-plus-token": "^2.1.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-refresh-token": "0.0.1",
+    "pug": "^3.0.0",
+    "rootpath": "^0.1.2",
+    "sharp": "^0.25.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
