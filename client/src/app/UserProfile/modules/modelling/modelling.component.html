@@ -1,0 +1,120 @@
+<div class="upload-container mat-elevation-z8">
+  <h2 mat-dialog-title>Edit Profile </h2>
+
+  <mat-dialog-content>
+
+    <div class="client-img">
+      <img src="{{avatar}}" alt="image" style="border-radius: 50%;">
+    </div>
+
+
+    <mat-card class="upload-card">
+      <form [formGroup]="galleryForm" (ngSubmit)=" updateProfilePicture()" enctype="multipart/form-data" method="post">
+        <mat-form-field class="upload-full-width">
+          <mat-label>Profile Picture</mat-label>
+          <ngx-mat-file-input formControlName="file" placeholder="profile photo"
+            valuePlaceholder="Change Display Picture" [errorStateMatcher]="matcher"></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+          <mat-error>
+            <span *ngIf="!galleryForm.get('file').valid">Please select profile picture</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button class="btn btn-info" type="submit" >Change</button>
+        </div>
+
+      </form>
+
+    </mat-card>
+    <br>
+
+    <mat-card class="upload-card">
+      <form [formGroup]="coverPhotoForm" (ngSubmit)=" changeCoverPhoto()" enctype="multipart/form-data" method="post">
+        <mat-form-field class="upload-full-width">
+          <mat-label>Cover Photo</mat-label>
+          <ngx-mat-file-input formControlName="file" placeholder="Cover photo"
+            valuePlaceholder="Change Cover Photo" [errorStateMatcher]="matcher"></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+          <mat-error>
+            <span *ngIf="!galleryForm.get('file').valid">Please select cover photo</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button class="btn btn-info" type="submit" >Upload</button>
+        </div>
+
+      </form>
+
+    </mat-card>
+
+  
+
+    <mat-card class="upload-card">
+      <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" method="post">
+
+        <mat-form-field class="upload-full-width">
+          <mat-label> Email</mat-label>
+          <input matInput placeholder="{{email}}" value="{{email}}" formControlName="email">
+         
+        </mat-form-field>
+
+        <mat-form-field class="upload-full-width">
+          <mat-label>Status</mat-label>
+          <input matInput placeholder="{{bio}}" value="{{bio}}" formControlName="bio">
+        </mat-form-field>
+
+        <mat-form-field class="upload-full-width">
+          <mat-label>Change your Phone Number</mat-label>
+          <input matInput placeholder="{{phoneNumber}}" value="{{phoneNumber}}" formControlName="phoneNumber">
+        </mat-form-field>
+
+        <div class="button-row">
+          <button class="btn btn-info" type="submit" mat-button>SAVE</button>
+        </div>
+
+      </form>
+    </mat-card>
+
+
+    <mat-card class="upload-card">
+      <form [formGroup]="bankForm" (ngSubmit)="updateBank()" method="post">
+
+        <mat-form-field class="upload-full-width">
+          <mat-label>Bank Account Name</mat-label>
+          <input matInput placeholder="{{accountName}}" value="{{accountName}}" formControlName="accountName"
+            [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!bankForm.get('accountName').valid && bankForm.get('accountName').touched">Please enter Bank Account Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="upload-full-width">
+          <mat-label>Bank Account Number</mat-label>
+          <input matInput placeholder="{{accountNumber}}" value="{{accountNumber}}" formControlName="accountNumber" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!bankForm.get('accountNumber').valid && bankForm.get('accountNumber').touched">Change your Account Numbe</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="upload-full-width">
+          <mat-label>Bank Name</mat-label>
+          <input matInput placeholder="{{bankName}}" value="{{bankName}}" formControlName="bankName"
+            [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!bankForm.get('bankName').valid && bankForm.get('bankName').touched">Please enter
+              Bank Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button class="btn btn-info" type="submit" mat-button>ADD BANK</button>
+        </div>
+
+      </form>
+    </mat-card>
+  
+  </mat-dialog-content>
+
+</div>

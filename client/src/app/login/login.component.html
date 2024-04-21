@@ -1,0 +1,83 @@
+<!-- Start Login Area -->
+<section class="login-area">
+    <div class="row m-0">
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-image">
+                <img src="assets/img/login-bg.jpg" alt="image">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-content">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="login-form">
+                            <div class="logo">
+                                <a href="/"><img src="assets/img/black-logo.png" alt="image"></a>
+                            </div>
+
+                            <h3>Welcome back</h3>
+                            <p>Want to become a Model? <a [routerLink]="['/model/register']">Register</a></p>
+
+                            <div *ngIf="LoginError " class=" alert p-1 alert-danger"> Invalid Login Credentials </div>
+                            <div *ngIf="Loading " class=" alert p-1 alert-success"> Loading ... </div>
+
+                            <form [formGroup]="FormData" (ngSubmit)="ProcessForm()" class="form-signin" method="POST">
+                                <div class="form-group">
+                                    <input type="text" formControlName="username" class="form-control"
+                                        placeholder="Enter username" required>
+                                    <div *ngIf="Submitted && f.username.errors " class=" alert p-1 alert-danger">
+
+                                        <span *ngIf=f.username.errors.required> Username is Required </span>
+                                        <span *ngIf=f.username.errors.pattern> Enter a Valid Username </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="password" formControlName= 'password'  placeholder="Enter password " class="form-control "
+                                        aria-describedby="passwordHelpInline" required>
+                                    <div *ngIf="Submitted && f.password.errors" class=" alert p-1 alert-danger">
+
+                                        <span *ngIf=" f.password.errors.required "> Password is Required </span>
+                                        <span *ngIf=" f.password.errors.minlength "> Password Most Be more than 6
+                                            Characters </span>
+
+                                    </div>
+                                </div>
+
+                                <!----->
+
+                                <div class="form-group">
+                                    <input name="RememberMe" type="checkbox" class="mr-2">
+
+                                    <label for="Remember"> Remember Me ? </label>
+
+                                </div>
+                                <!---------->
+                               
+
+                                <button type="submit" value=" Log in " class="btn btn-primary">Login</button>
+
+                                <div class="form-group">
+                                    <a [routerLink]="['/model/password-reset']"> <span> Forgot Password ? </span> </a>
+
+                                </div>
+
+                                <div class="connect-with-social">
+                                    <button type="submit" class="facebook"><i class="fab fa-facebook-square"></i>
+                                        Connect with Facebook</button>
+                                    <button type="submit" class="google"><i class="fab fa-google"></i> Connect with
+                                        Google</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Login Area -->

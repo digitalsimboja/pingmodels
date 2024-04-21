@@ -1,0 +1,165 @@
+<app-profileheader></app-profileheader>
+<mat-divider></mat-divider>
+
+<mat-drawer-container>
+  <mat-drawer-content>
+    <!-- Start How It Works Area -->
+    <section class="how-it-works-area ptb-70">
+      <div class="container">
+
+        <div class="section-title cover" [style.backgroundImage]="getBackgroundImageUrl()">
+          <!-- <div class="section-title" > -->
+          <h2 class="profile">{{username}} Profile </h2>
+          <div class="bar"></div>
+          <p>
+            <span *ngIf="following === true">You can pleasure yourself with my private assets</span>
+            <span *ngIf="following === false">Follow me to enjoy me assets</span>
+          </p>
+
+          <button type="button" class="follow btn btn-primary" (click)="follow()">
+            <span class="following" *ngIf="following === true">Following</span>
+            <span *ngIf="following === false">Follow</span>
+          </button>
+
+          <button type="button" class="unfollow btn btn-primary" (click)="unfollow()" *ngIf="following === true">
+            Unfollow
+          </button>
+        </div>
+
+        <mat-toolbar fxLayout="row" color="info">
+          <a routerLink="/model/profile">
+            <span fxFlex>Profile</span>
+          </a>
+
+          <button mat-button fxHide.xs (click)="getModelPublicPhotos()">
+            <mat-icon class="mr">image</mat-icon>
+            Public Photos
+          </button>
+          <button mat-button fxHide.xs (click)="getModelPrivatePhotos()">
+            <mat-icon class="mr">collections</mat-icon>
+            Private Photos
+          </button>
+          <button mat-button fxHide.xs (click)="getModelPublicVideos()">
+            <mat-icon class="mr">slideshow</mat-icon>
+            Public Videos
+          </button>
+          <button mat-button fxHide.xs (click)="getModelPrivateVideos()">
+            <mat-icon class="mr">slideshow</mat-icon>
+            Private Videos
+          </button>
+
+          <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+            <span *ngIf="gridColumns === 4">Switch Columns</span>
+            <span *ngIf="gridColumns === 3">Switch Columns</span>
+          </button>
+          <mat-menu #dropMenu="matMenu">
+            <ng-container>
+              <button mat-menu-item (click)="getModelPublicPhotos()">
+                <mat-icon class="mr">image</mat-icon>
+                Public Photos
+              </button>
+              <button mat-menu-item (click)="getModelPrivatePhotos()">
+                <mat-icon class="mr">collections</mat-icon>
+                Private Photos
+              </button>
+              <button mat-menu-item (click)="getModelPublicVideos()">
+                <mat-icon class="mr">slideshow</mat-icon>
+                Public Videos
+              </button>
+              <button mat-menu-item (click)="getModelPrivateVideos()">
+                <mat-icon class="mr">slideshow</mat-icon>
+                Private Videos
+              </button>
+
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-menu>
+        </mat-toolbar>
+
+        <!-- Start How It Works Area -->
+        <router-outlet></router-outlet>
+        <!-- End How It Works Area -->
+
+        <!-- Start Blog Area -->
+        <section *ngIf="showDefault" class="blog-area ptb-70 pt-0">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="single-blog-post">
+                  <div class="blog-image">
+                    <a href="#">
+                      <img src="" alt="" >
+                    </a>
+
+                  </div>
+                  <br>
+                
+                  <div class="blog-post-content">
+                    <!-- Comment section-->
+                    <mat-card class="mat-elevation-z4 content">
+                      <div class="messages">
+                        <h4>Comments</h4>
+                        <div class="message" *ngFor="let message of messages">
+                          <div class="pic">
+                            <img src="/assets/man.svg" alt="">
+                          </div>
+                          <div class="message-text">
+                            <span>{{message.postedBy}}</span>
+                            <p>{{message.comment}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card>
+                    <br>
+                    <button type="button" class="btn btn-info" (click)="ping()">
+                      Ping
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <!-- End Blog Area -->
+      </div>
+
+    </section>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-profilefooter></app-profilefooter>
+
+<!-- <div *ngIf="showDefault" fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" class="items"
+            [class.selected]="isSelectedModel(photo)"
+            *ngFor="let photo of photos| paginate: { id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalRecords }">
+            <mat-card class="mat-elevation-z4 content">
+
+              <mat-card-content (click)="viewPhoto(photo)">
+
+                <img mat-card-image src="{{photo.imageUrl}}">
+
+                <p>
+                  {{photo.imageTitle}}
+                </p>
+                <p>
+                  {{photo.imageDesc}}
+                </p>
+
+              </mat-card-content>
+              <mat-card-actions>
+
+                <button type="submit" class="btn btn-primary" (click)="viewPhoto(photo)">View Model</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div>
+            <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+            </pagination-controls>
+          </div>
+
+        </div>-->

@@ -1,0 +1,12 @@
+<div>
+  <div class="input-area">
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" method="post">
+      <input type="hidden" placeholder="Your name" formControlName="name" id="name">
+      <textarea type="text" placeholder="Your message" formControlName="comment" id="message" rows="5"></textarea>
+      <button>
+        Ping
+      </button>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,49 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer-container{
+  height: 100%;
+  margin-top: 100px;
+
+}
+
+ul li{
+  list-style-type: none;
+  text-align: left;
+}
+
+mat-drawer{
+  width: 250px;
+  
+}
+
+mat-divider{
+  color: #14354e
+}
+
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+

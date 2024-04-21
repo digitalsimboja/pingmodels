@@ -1,0 +1,36 @@
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" class="items"
+    [class.selected]="isSelectedModel(photo)"
+    *ngFor="let photo of photos| paginate: { id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalRecords }">
+    <mat-card class="mat-elevation-z4">
+
+      <mat-card-content>
+
+        <img mat-card-image src="{{photo.imageUrl}}" style="filter: blur(15px);">
+
+        <p>
+          {{photo.imageTitle}}
+        </p>
+
+        {{photo.imageDesc}}
+
+      </mat-card-content>
+      <mat-card-actions>
+        <span>
+          <button type="submit" class="btn btn-primary" (click)="payNaira(photo)">Pay NGN {{photo.chargeNGN}}</button>
+        </span>
+        <span class="danger">{{responseMessage}}</span>
+       <span>
+        <button type="submit" class="btn btn-primary" (click)="payUSD(photo)">Pay USD {{photo.chargeUSD}}</button>
+       </span>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
+  <div>
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+    </pagination-controls>
+  </div>
+</div>

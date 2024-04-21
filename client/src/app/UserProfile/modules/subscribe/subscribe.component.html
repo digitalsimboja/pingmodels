@@ -1,0 +1,92 @@
+<app-profileheader></app-profileheader>
+<mat-divider></mat-divider>
+
+<mat-drawer-container>
+  <mat-drawer-content>
+    <!-- Start How It Works Area -->
+    <section class="how-it-works-area ptb-70">
+      <div class="container">
+        <div class="section-title">
+          <h2>Subscribe </h2>
+          <div class="bar"></div>
+          <p>
+            Subscribe to become a  member of Ping Models and grow your modelling career
+          </p>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3> Free Plan</h3>
+              <div class="bar"></div>
+              <p>Basic plan</p>
+              <mat-divider></mat-divider>
+              <br>
+              <ul class="features-list">
+                <li><span><i class="flaticon-check-mark"></i> No tokens credits</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Cannot upload public photos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Cannot upload private photos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Cannot upload public videos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Cannot upload private videos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Cannot view models profile</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Upload public photo</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Upload cover photo</span></li>
+              </ul>
+              <button type="submit" class="btn btn-primary" [routerLink]="['/model/profile/subscribe']" >Join today</button>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3>N 1,000 membership fee</h3>
+              <div class="bar"></div>
+              <p>N 1,000 for membership</p>
+              <mat-divider></mat-divider>
+              <br>
+              <ul class="features-list">
+                <li><span><i class="flaticon-check-mark"></i> Access models profile</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View public photos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View public videos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Can cancel your subscription anytime</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Can ping a memeber</span></li>
+               
+              </ul>
+              <button type="submit" class="btn btn-primary" (click)="payMembership(1000)">Become a member</button>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3>N 1,000 monthly subscription</h3>
+              <div class="bar"></div>
+              <p>N1,000 monthly subscription fee</p>
+              <mat-divider></mat-divider>
+              <br>
+              <ul class="features-list">
+                <li><span><i class="flaticon-check-mark"></i> FREE 1,000 tokens</span></li>
+                <li><span><i class="flaticon-check-mark"></i> Access models profile</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View unlimited public photos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View unlimited private photos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View unlimited public videos</span></li>
+                <li><span><i class="flaticon-check-mark"></i> View unlimited private videos</span></li>
+            
+              </ul>
+              <button type="submit" class="btn btn-primary" (click)="paySubscription(1000)" >Subscribe</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<app-profilefooter></app-profilefooter>

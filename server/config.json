@@ -1,0 +1,11 @@
+{
+    "emailFrom": "admin@elegantmodels.com",
+    "smtpOptions": {
+        "host": "smtp.ethereal.email",
+        "port": 587,
+        "auth": {
+            "user": "gabriel.mayer@ethereal.email",
+            "pass": "gXqZtBT6BNvTpZ8FE5"
+        }
+    }
+}

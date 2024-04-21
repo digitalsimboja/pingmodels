@@ -1,0 +1,54 @@
+<div class="upload-container mat-elevation-z8">
+  <h2 mat-dialog-title>Upload Photo</h2>
+
+  <mat-dialog-content>
+
+    <div class="upload-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div *ngIf="Uploaded " class=" alert p-1 alert-success"> Uploading...</div>
+    <mat-card class="upload-card">
+      <form [formGroup]="galleryForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data" method="post">
+        <mat-form-field class="upload-full-width">
+          <mat-label>Modelling Photo</mat-label>
+          <ngx-mat-file-input formControlName="file" placeholder="Select photo"
+            valuePlaceholder="Select photo to upload" [errorStateMatcher]="matcher"></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+          <mat-error>
+            <span *ngIf="!galleryForm.get('file').valid">Please select modeelling photo</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="upload-full-width">
+          <mat-label>Name this Photo</mat-label>
+          <input matInput placeholder="Photo Name" formControlName="imageTitle" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!galleryForm.get('imageTitle').valid && galleryForm.get('imageTitle').touched">Please choose a
+              Photo Name</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="upload-full-width">
+          <mat-label>Photo Description</mat-label>
+          <input matInput placeholder="Photo Description" formControlName="imageDesc" [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!galleryForm.get('imageDesc').valid && galleryForm.get('imageDesc').touched">Please enter Photo
+              Description</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Lock Photo</mat-label>
+          <mat-select formControlName="imageControl">
+            <mat-option value="public">Public</mat-option>
+            <mat-option value="private">Private</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      
+        <div class="button-row">
+          <button type="submit" mat-flat-button color="primary">
+            <mat-icon>upgrade</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-dialog-content>
+</div>

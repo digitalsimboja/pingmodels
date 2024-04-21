@@ -1,0 +1,149 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  ul li {
+    list-style-type: none;
+    text-align: left;
+  }
+    
+  mat-drawer{
+    width: 250px;
+  }
+  
+  mat-drawer-container{
+    height: 100%;
+    margin-top: 100px;
+  
+  }
+  
+  mat-drawer-content{
+    padding: 0px;
+  }
+  
+  mat-divider{
+    color: #14354e
+  }
+  
+  mat-toolbar {
+    justify-content: space-between;
+    background-color: #14354e;
+    color:  white;
+  }
+  
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .content > mat-card {
+    margin-bottom: 16px;
+    background-color: rgb(159, 99, 194);
+  
+  }
+
+  a{
+    text-decoration: none;
+    font-size: 110%;
+    white-space: normal;
+}
+
+button{
+    font-size: 110%;
+    min-width: min-content;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .section-title p{
+    color:  #067ca0;
+  }
+  .section-title .cover{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 360px;
+    min-width:  500px;
+    border-radius:  0 0 5px 5px;
+    position: relative;
+  }
+.profile{
+  color: rgb(2, 85, 57);
+  padding: 10px;
+}
+  
+%input {
+  width: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 15px;
+
+  &:focus{
+    outline: none;
+  }
+}
+
+.input-area {
+  width: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      max-width: 450px;
+
+      input {
+        @extend %input;
+        margin: 0 0 10px 0;
+      }
+
+      textarea {
+        @extend %input;
+      }
+    }
+
+    button {
+      width: 25%;
+      border: none;
+      background: darkslategray;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 10px;
+      padding: 5px 20px;
+      border-radius: 27px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12),
+        0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

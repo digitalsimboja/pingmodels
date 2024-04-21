@@ -1,0 +1,146 @@
+<!-- Start Signup Area -->
+<section class="signup-area">
+    <div class="row m-0">
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="signup-image">
+                <img src="assets/img/signup-bg.jpg" alt="image">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="signup-content">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="signup-form">
+                            <div class="logo">
+                                <a href="/"><img src="assets/img/black-logo.png" alt="image"></a>
+                            </div>
+
+                            <h3>Register</h3>
+                            <p>Already registered? <a [routerLink]="['/model/login']">Log in</a></p>
+
+                            <form [formGroup]="FormData" (ngSubmit)="ProcessForm()" method="POST">
+
+                                <span *ngIf="Error" class="alert alert-danger mt-1 "> {{ ErrorMgs}}</span>
+                                <span *ngIf="UserNameError" class="alert alert-danger mt-1 "> User Name Already Exist
+                                </span>
+
+                                <!----  -->
+                                <div class="form-group ">
+
+                                    <input type="text" formControlName="firstName" class="form-control" required
+                                        placeholder="Enter First Name">
+                                    <div *ngIf="Submitted && f.firstName.errors " class=" text-danger">
+                                        <span *ngIf=f.firstName.errors.required>* First Name is Required </span>
+                                    </div>
+
+                                </div>
+
+                                <!---------->
+
+                                <!----  -->
+                                <div class="form-group">
+
+                                    <input type="text" formControlName="lastName" class="form-control" required
+                                        placeholder="Enter Last Name">
+                                    <div *ngIf="Submitted && f.lastName.errors " class=" text-danger">
+                                        <span *ngIf=f.lastName.errors.required> * Last Name is Required </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" formControlName="username" class="form-control" required
+                                        placeholder="Choose User Name or Model Name">
+                                    <div *ngIf="Submitted && f.username.errors " class=" text-danger">
+                                        <span *ngIf=f.username.errors.required> * User Name/Modelling Name is Required
+                                        </span>
+                                        <span *ngIf=f.username.errors.pattern> * User Name/Modelling Name Can Only be
+                                            Letter and Number <br>*User Name can not be
+                                            less then 3 characters </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" formControlName="email" required class="form-control"
+                                        placeholder="Enter Email">
+                                    <div *ngIf="Submitted && f.email.errors " class=" text-danger">
+                                        <span *ngIf=f.email.errors.required> * Email is Required </span>
+                                        <span *ngIf=f.email.errors.pattern> * Enter A Valid Email Address </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" formControlName="phoneNumber" class="form-control"
+                                        placeholder="Enter Phone Number">
+                                    <div *ngIf="Submitted && f.phoneNumber.errors " class=" text-danger">
+                                        <span *ngIf=f.phoneNumber.errors.required> * Phone Number is Required </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" formControlName="password" class="form-control"
+                                        placeholder="Enter Password">
+                                    <div *ngIf="Submitted && f.password.errors " class=" text-danger">
+                                        <span *ngIf=f.password.errors.required>* Password is Required </span> <br>
+
+                                        <span *ngIf=f.password.errors.pattern>
+                                            * Password Most Contain Upper Case <br>
+                                            * Password Most Contain Number<br>
+                                            * Can Not Be Less Than Six Characters
+                                        </span><br>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <!---------->
+
+                                <div class="form-group">
+
+                                    <input type="password" formControlName="confirmPassword" class="form-control"
+                                        placeholder="Confirm Password">
+
+                                    <div *ngIf="Submitted && f.confirmPassword.errors " class=" text-danger ">
+                                        <span *ngIf=f.confirmPassword.errors.required> * Confirm Password is Required
+                                        </span>
+                                        <span *ngIf=f.confirmPassword.errors.mustMatch> * Password Do Not Match </span>
+                                        <br>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input formControlName="acceptTerms" type="checkbox" class="form-control"
+                                        class="mr-2">
+                                    <span>
+
+                                        <label for="acceptTerms"> <a href="#"> Accept Terms and Conditions?</a> </label>
+
+                                    </span>
+                                </div>
+
+                                <button type="submit" value=" Create Account " class="btn btn-primary">Register 18+
+                                    Only</button>
+                                    
+
+                                <div *ngIf="Loading " class=" alert p-1 alert-success"> Registration in progress ....
+                                </div>
+                                <span *ngIf="Success" class="alert alert-success mt-1"> Registration Successfull. You
+                                    can Log in Now. <a [routerLink]="['/model/login']">Log in</a></span>
+
+                                <div class="connect-with-social">
+                                    <span>Or</span>
+                                    <button type="submit" class="facebook"><i class="fab fa-facebook-square"></i>
+                                        Connect with Facebook</button>
+                                    <button type="submit" class="google"><i class="fab fa-google"></i> Connect with
+                                        Google</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Registration Area -->

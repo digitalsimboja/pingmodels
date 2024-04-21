@@ -1,0 +1,107 @@
+<app-profileheader></app-profileheader>
+<mat-divider></mat-divider>
+
+<mat-drawer-container>
+
+  <mat-drawer-content>
+    <!-- Start How It Works Area -->
+    <section class="how-it-works-area ptb-70">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Public Photos </h2>
+          <div class="bar"></div>
+          <p>Your fans have access to your public photos for free. You can lock your public photos into exclusive contents and earn more</p>
+        </div>
+
+      </div>
+
+      <mat-toolbar fxLayout="row" color="info">
+        <a routerLink="/model/profile">
+          <span fxFlex>Profile</span>
+        </a>
+
+        <button mat-button fxHide.xs [routerLink]="['/model/profile/my/public_photos']">
+            <mat-icon class="mr">image</mat-icon>
+            Public Photos
+        </button>
+        
+        <button mat-button fxHide.xs [routerLink]="['/model/profile/my/private_photos']">
+            <mat-icon class="mr">collections</mat-icon>
+            Private Photos
+        </button>
+
+        <button mat-button fxHide.xs [routerLink]="['/model/profile/my/public_videos']">
+            <mat-icon class="mr">slideshow</mat-icon>
+            Public Videos
+        </button>
+
+        <button mat-button fxHide.xs [routerLink]="['/model/profile/my/private_videos']">
+            <mat-icon class="mr">slideshow</mat-icon>
+            Private Videos
+        </button>
+
+       
+
+        <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+          <span *ngIf="gridColumns === 4">Switch Columns</span>
+          <span *ngIf="gridColumns === 3">Switch Columns</span>
+        </button>
+        <mat-menu #dropMenu="matMenu">
+          <ng-container>
+            <button mat-menu-item [routerLink]="['/model/profile/my/public_photos']">
+              <mat-icon class="mr">image</mat-icon>
+              Public Photos
+            </button>
+            <button mat-menu-item [routerLink]="['/model/profile/my/private_photos']">
+              <mat-icon class="mr">collections</mat-icon>
+              Private Photos
+            </button>
+            <button mat-menu-item [routerLink]="['/model/profile/my/public_videos']">
+              <mat-icon class="mr">slideshow</mat-icon>
+              Public Videos
+            </button>
+            <button mat-menu-item  [routerLink]="['/model/profile/my/private_videos']">
+              <mat-icon class="mr">slideshow</mat-icon>
+              Private Videos
+            </button>
+
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-menu>
+      </mat-toolbar>
+       
+      <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let photo of publicPhotos | paginate: { id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalRecords }">
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <mat-card-title> {{photo.imageTitle}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{photo.imageUrl}}">
+            <mat-card-content>
+              <p>
+                {{photo.imageDesc}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button class="btn btn-info"  class="btn btn-info" mat-button (click)= "editPhoto(photo)">EDIT</button>
+              <button class="btn btn-primary" mat-button (click)= "deletePhoto(photo)">DELETE</button>
+             
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div>
+          <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+
+    </section>
+    <!-- End How It Works Area -->
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<app-profilefooter></app-profilefooter>

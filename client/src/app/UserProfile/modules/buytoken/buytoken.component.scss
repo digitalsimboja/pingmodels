@@ -1,0 +1,40 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+ul li {
+  list-style-type: none;
+  text-align: left;
+}
+  
+mat-drawer{
+  width: 250px;
+}
+
+mat-drawer-container{
+  height: 100%;
+  margin-top: 100px;
+
+}
+
+mat-drawer-content{
+  padding: 0px;
+}
+
+mat-divider{
+  color: #14354e
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+
+        <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" (click) ="viewModel(video)" class="items" [class.selected] ="isSelectedModel(video)"
+              *ngFor="let video of videos| paginate: { id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalRecords }">
+              <mat-card class="mat-elevation-z4">
+               
+                <mat-card-content (click)="viewVideo()">
+                  <video mat-card-image width="320" height="240" controls >
+                    <source src="{{video.videoUrl}}" type="video/mp4">    
+                  </video>
+                     
+        
+                  <p>
+                    {{video.videoTitle}}
+                  </p>
+                  <a>
+                    {{video.videoDesc}}
+                  </a>
+                 
+                <button type="submit" class="btn btn-primary" (click)="viewVideo()">View Model</button>
+
+                
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>LIKE</button>
+                  <button mat-button>FOLLOW ME</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+            <div>
+              <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+              </pagination-controls>
+            </div>
+          </div>
+    
+       
+  

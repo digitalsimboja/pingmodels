@@ -1,0 +1,55 @@
+<app-profileheader></app-profileheader>
+
+<mat-drawer-container>
+
+  <mat-drawer-content>
+
+    <div  id="card-heading">
+        <h1> Instantly withdraw to your bank account</h1>
+        <p>Please note you can only withdraw your tokens recieved when your contents are viewed</p>
+    </div> 
+    
+    <div class="grid-container">
+      <mat-grid-list cols="2" rowHeight="400px">
+        <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+
+          <mat-card class="subscribe-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{card.title}}
+
+              </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div>{{card.content1}}</div>
+              <div>{{card.content2}} </div>
+              <div>{{card.content3}}</div>
+              <div>{{card.content4}} </div>
+              <div>{{card.content5}}</div>
+              <div>{{card.content6}}</div>
+              <div>{{card.content7}}</div>
+
+            </mat-card-content>
+            <mat-card-footer>
+              <mat-card-actions>
+                <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+                  <button mat-raised-button type="submit" class="subscribe-button">
+                    {{card.subscribe}}
+                  </button>
+                </div>
+              </mat-card-actions>
+              
+
+            </mat-card-footer>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<app-profilefooter></app-profilefooter>

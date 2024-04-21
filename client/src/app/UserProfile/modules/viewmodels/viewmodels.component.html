@@ -1,0 +1,88 @@
+<app-profileheader></app-profileheader>
+<mat-divider></mat-divider>
+
+<mat-drawer-container>
+  <mat-drawer-content>
+    <!-- Start How It Works Area -->
+    <section class="how-it-works-area ptb-70">
+      <div class="container">
+        <div class="section-title">
+          <h2>Super Elegant Models </h2>
+          <div class="bar"></div>
+          <p>View and ping a model for your pleasure</p>
+        </div>
+
+      </div>
+
+      <mat-toolbar fxLayout="row" color="info">
+        <div fxShow="true" fxHide.gt-sm="true">
+          <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <a mat-button class="companyName" routerLink="/model/profile">
+          <span>Models Gallery</span>
+        </a>
+
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-xs="true">
+          <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+
+            <li>
+              <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+                <span *ngIf="gridColumns === 4">Switch Columns</span>
+                <span *ngIf="gridColumns === 3">Switch Columns</span>
+              </button>
+            </li>
+          </ul>
+
+        </div>
+      </mat-toolbar>
+
+
+      <div class=" content" fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" class="single-how-it-works"
+          [class.selected]="isSelectedModel(user)"
+          *ngFor="let user of users| paginate: { id: 'listing_pagination', itemsPerPage: 12, currentPage: page, totalItems: totalRecords }">
+          <mat-card class="mat-elevation-z4">
+
+            <mat-card-content>
+              <a>
+                <img mat-card-image src="{{user.avatar}}">
+              </a>
+
+              <p>
+                {{user.bio}}
+              </p>
+              <p>
+                <a (click)="viewModel(user)">
+                  @{{user.local.username}}
+                </a>
+              </p>
+
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button type="button" class="btn btn-primary" (click)="viewModel(user)">
+                View
+              </button>
+             
+
+            </mat-card-actions>
+
+          </mat-card>
+
+        </div>
+        <div>
+          <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+
+    </section>
+    <!-- End How It Works Area -->
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<app-profilefooter></app-profilefooter>

@@ -1,0 +1,62 @@
+<div class="upload-container mat-elevation-z8">
+    <h2 mat-dialog-title>Edit Video </h2>
+  
+    <mat-dialog-content>
+  
+      <div class="client-img">
+        <img src="" alt="video" style="border-radius: 50%;">
+      </div>
+  
+      <div class="upload-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      </div>
+      <div *ngIf="Uploaded " class=" alert p-1 alert-success"> Video Updated</div>
+  
+      <mat-card class="upload-card">
+        <form [formGroup]="videoForm" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data" method="post">
+  
+          <mat-form-field class="upload-full-width">
+            <mat-label> Video Title</mat-label>
+            <input matInput placeholder="{{videoTitle}}" value ="{{videoTitle}}" formControlName="videoTitle" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!videoForm.get('videoTitle').valid && videoForm.get('videoTitle').touched">Change Video Title</span>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="upload-full-width">
+            <mat-label>Video Description</mat-label>
+            <input matInput placeholder="{{videoDesc}}" value="{{videoDesc}}" formControlName="videoDesc" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!videoForm.get('videoDesc').valid && videoForm.get('videoDesc').touched">Change Video Description</span>
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field class="upload-full-width" *ngIf="videoPrivate ">
+            <mat-label>Charge-per-view in Naira</mat-label>
+            <input matInput placeholder="{{chargeNGN}}" value="{{chargeNGN}}" formControlName="chargeNGN" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!videoForm.get('chargeNGN').valid && videoForm.get('chargeNGN').touched">Set how much you
+                wish to charge-per-view in Naira</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="upload-full-width" *ngIf="videoPrivate ">
+            <mat-label>Charge-per-view in Dollars</mat-label>
+            <input matInput placeholder="{{chargeUSD}}" value="{{chargeUSD}}" formControlName="chargeUSD" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!videoForm.get('chargeUSD').valid && videoForm.get('chargeUSD').touched">Set how much you
+                wish to charge-per-view in Dollars</span>
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="button-row">
+            <button type="submit" mat-flat-button color="primary">
+              <mat-icon>update</mat-icon>
+            </button>
+          </div>
+  
+        </form>
+      </mat-card>
+    </mat-dialog-content>
+  
+  </div>

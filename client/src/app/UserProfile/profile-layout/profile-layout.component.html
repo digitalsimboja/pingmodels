@@ -1,0 +1,209 @@
+<app-profileheader></app-profileheader>
+<mat-divider></mat-divider>
+
+<mat-drawer-container>
+  <mat-drawer-content>
+
+    <!-- Start Feedback Area -->
+    <section class="feedback-area ptb-70 bg-f7fafd">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Ping Models </h2>
+          <div class="bar"></div>
+          <p>View and pleasure yourself with these super elegant ping models.</p>
+        </div>
+
+
+        <div class="feedback-slides">
+          <div class="client-feedback">
+            <div>
+              <ngx-slick-carousel class="carousel feedback" #slickModal="slick-carousel" [config]="imagesSlider">
+
+                <div ngxSlickItem class="item slide" *ngFor="let user of users">
+                  <div class="single-feedback">
+                    <div class="client-img" (click)="viewModel(user)">
+
+                      <img src="{{user.avatar}}" alt="{{user.local.username}}">
+
+                    </div>
+
+                    <h3>{{ user.local.firstName}}</h3>
+                    <p>{{user.local.username}}</p>
+                    <p>{{user.imageDesc}}</p>
+
+                  </div>
+                </div>
+
+              </ngx-slick-carousel>
+            </div>
+          </div>
+
+          <div class="client-thumbnails">
+            <div>
+              <ngx-slick-carousel class="carousel thumbs" #slickModal="slick-carousel" [config]="thumbnailsSlider">
+
+                <div ngxSlickItem class="item" *ngFor="let user of users">
+                  <div class="img-fill" (click)="viewModel(user)">
+
+                    <img src="{{user.avatar}}" alt="{{user.local.username}}">
+
+                  </div>
+                </div>
+
+              </ngx-slick-carousel>
+            </div>
+
+            <button class="prev-arrow slick-arrow">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <button class="next-arrow slick-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Feedback Area -->
+
+
+    <!-- Start How It Works Area -->
+    <section class="how-it-works-area ptb-70">
+      <div class="container">
+        <div class="section-title">
+          <h2>Make money with your Photos and Videos </h2>
+          <div class="bar"></div>
+          <p>
+            When people view your exclusive photos and videos, you make money
+          </p>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3>My Photos and Videos</h3>
+              <div class="bar"></div>
+              <p>List of my photos and videos</p>
+              <mat-divider></mat-divider>
+              <br>
+
+              <mat-divider></mat-divider>
+              <div mat-form-field>
+                <div>
+                  <a [routerLink]="['/model/profile/my/public_photos']">Public Photos</a>
+
+                </div>
+                <br>
+                <div>
+                  <a [routerLink]="['/model/profile/my/private_photos']">Private Photos</a>
+
+                </div>
+                <br>
+                <mat-divider></mat-divider>
+                <div>
+
+                  <a [routerLink]="['/model/profile/my/public_videos']">Public Videos</a>
+
+                </div>
+                <br>
+
+                <div>
+                  <a [routerLink]="['/model/profile/my/private_videos']">Private Videos</a>
+
+                </div>
+
+
+              </div>
+              <mat-divider></mat-divider>
+              <br>
+
+              <br>
+              <div>
+                <button class="btn btn-info">
+                  <a [routerLink]="['/model/profile/me']">Profile</a>
+                </button>
+
+              </div>
+              <br>
+              <button class="btn btn-primary">
+                Withdraw Token
+              </button>
+              <br>
+              <button class="btn btn-primary" (click) = "enterChat()">
+                Chat room
+              </button>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3>Post New Photos</h3>
+              <div class="bar"></div>
+              <p>Your Public/Private Photos</p>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="single-feedback" *ngIf="publicProfile">
+                <div class="client-img">
+
+                  <a [routerLink]="['/model/profile/me']">
+                    <img src="{{publicProfile.avatar}}" alt="{{publicProfile.username}}" style="border-radius: 50%;">
+                  </a>
+                </div>
+
+                <h3>{{publicProfile.firstName}}</h3>
+                <span>{{publicProfile.username}}</span>
+                <p>{{publicProfile.bio}}</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary" (click)="openDialogPhoto()">Add Photo</button>
+
+
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="single-how-it-works">
+
+              <h3>Post New Videos</h3>
+              <div class="bar"></div>
+              <p>Your Public/Private Videos</p>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="single-feedback" *ngIf="publicProfile">
+                <div class="client-img">
+
+                  <a [routerLink]="['/model/profile/me']">
+                    <img src="{{publicProfile.avatar}}" alt="{{publicProfile.username}}" style="border-radius: 50%;">
+                  </a>
+                </div>
+
+                <h3>{{publicProfile.firstName}}</h3>
+                <span>{{publicProfile.username}}</span>
+                <p>{{publicProfile.bio}}</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary" (click)="openDialogVideo()">Add Video</button>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+<app-profilefooter></app-profilefooter>
+<div class="go-top"><i class="fas fa-arrow-up"></i></div>
